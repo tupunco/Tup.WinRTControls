@@ -1,0 +1,49 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Tup.WinRTControls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Controls="using:Tup.WinRTControls.Controls"
+    xmlns:Common="using:Tup.WinRTControls.Common"
+    x:Class="Tup.WinRTControls.MainPage"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <Common:ColorToBrushConverter x:Key="ColorToBrushConverter" />
+    </Page.Resources>
+
+    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel  HorizontalAlignment="Left" Margin="69,65,0,0" VerticalAlignment="Top" Height="277" Width="259">
+            <Controls:ColorPicker x:Name="colorPicker"/>
+            <Border BorderBrush="Black" BorderThickness="1" Height="100" Margin="0,10,0,0" 
+                    Background="{Binding SelectedColor, ElementName=colorPicker, Converter={StaticResource ColorToBrushConverter}}"/>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Left" Margin="389,78,0,0" VerticalAlignment="Top" Width="328">
+            <Controls:LazySlider x:Name="lazySlider" />
+            <TextBlock Text="{Binding LazyValue, ElementName=lazySlider}" HorizontalAlignment="Left"/>
+        </StackPanel>
+
+        <Button Click="Button_Click_1">Open ProgressOverlay</Button>
+        <Controls:ProgressOverlay x:Name="ProgressOverlay" Visibility="Collapsed">
+            <Button HorizontalAlignment="Center" Click="Button_Click_2">Close ProgressOverlay</Button>
+        </Controls:ProgressOverlay>
+        <Controls:LongListSelector x:Name="LongListSelector" Margin="389,153,742,365">
+            <Controls:LongListSelector.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" Height="30">
+                        <TextBlock Text="-------" />
+                        <TextBlock Text="{Binding Value}" />
+                    </StackPanel>
+                </DataTemplate>
+            </Controls:LongListSelector.ItemTemplate>
+            <Controls:LongListSelector.GroupHeaderTemplate>
+                <DataTemplate>
+                    <Border Background="GreenYellow">
+                        <TextBlock Text="{Binding Key}" />
+                    </Border>
+                </DataTemplate>
+            </Controls:LongListSelector.GroupHeaderTemplate>
+        </Controls:LongListSelector>
+    </Grid>
+</Page>
