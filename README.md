@@ -11,3 +11,7 @@ Win8 Metro 下可以可用的几个控件
 + LazySlider 惰性值改变Slider
 
 + ColorPicker FROM: [http://silverlightcontrib.codeplex.com]
+
+
+
+Microsoft Public License (Ms-PL)
